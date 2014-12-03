@@ -5,7 +5,7 @@ To execute the build.xml script
 
 peakTraffic>ant
 
-  a) Files to be tested has to be inserted into peakTraffic/tests folder.
+  a) Put the files to be tested into peakTraffic/tests folder.
 
   b) Output will be always printed on console.
 
