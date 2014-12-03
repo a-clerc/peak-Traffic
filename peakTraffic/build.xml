@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="runjunit" name="peakTraffic">
+	<property name="src" location="src"/>
+	<property name="lib" location="lib"/>
+	<property name="build" location="build"/>
+	<target name="runjunit" depends="compile">
+		<junit>
+			<test name="com.peakTraffic.tests.Tests"/>
+			<classpath>
+				<pathelement location="${lib}/junit.jar"/>
+				<pathelement location="${lib}/org.hamcrest.core_1.1.0.jar"/>
+				<pathelement location="${build}"/>
+			</classpath>
+			<formatter type="plain" usefile="false" />
+		</junit>
+	</target>
+	<target name="compile">
+		<javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpath="${lib}/junit.jar"/>
+	</target>
+</project>
