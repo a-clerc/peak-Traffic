@@ -64,7 +64,9 @@ public class Interactions {
 					   if(sdf.parse(toParse) != null) {
 						   this.addInteraction(splittedByTabs[1], splittedByTabs[2]);
 					   }
-		    	   } else {
+		    	   } else if(line.equals("")){
+		    		   break;
+		    	   } else {	   
 		    		   throw new IOException("Incorrect Format");
 		    	   }
 		           line = br.readLine();
