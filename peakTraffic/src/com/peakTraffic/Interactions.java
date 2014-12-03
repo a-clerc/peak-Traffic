@@ -1,13 +1,21 @@
 package com.peakTraffic;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
@@ -50,6 +58,35 @@ public class Interactions {
 			}			
 		}
 		return numEdges==0;
+	}
+	
+	public void dumpToFile(String file) {
+		try {
+			FileOutputStream fos = new FileOutputStream(new File(file));
+			OutputStreamWriter os = new OutputStreamWriter(fos);
+			BufferedWriter bw = new BufferedWriter(os);
+			StringBuffer sb;
+			Calendar calendar = Calendar.getInstance(Locale.US);
+			Date d;
+			try {
+				for(Entry<String, HashSet<String>> entry: interactions.entrySet()) {
+					Set<String> set = entry.getValue();
+					Iterator<String> it = set.iterator();
+					while(it.hasNext()) {
+						calendar.add(Calendar.SECOND, 1);
+						d = calendar.getTime();	
+						sb = new StringBuffer(sdf.format(d));
+						sb.append("\t").append(entry.getKey());
+						sb.append("\t").append(it.next());
+						bw.write(sb.toString());
+						bw.newLine();
+					}
+				}
+			} catch(IOException e) {
+			} finally {
+				bw.close();
+			}
+		} catch(IOException e) {}
 	}
 	
 	private void dumpFromFile(String file) {	

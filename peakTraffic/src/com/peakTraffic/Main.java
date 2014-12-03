@@ -40,7 +40,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Interactions interactions = new Interactions();
-		interactions.generateHeavyInteractions(1000, 7, 100);
+		int numAccounts = 3000;
+		int rangeInteractionsPerAccount = 20;
+		int percentage = 100;
+		interactions.generateHeavyInteractions(numAccounts, rangeInteractionsPerAccount, percentage);
+		interactions.dumpToFile("tests/test_"+numAccounts+"_"+rangeInteractionsPerAccount+"_"+percentage+".txt");
 		
 		long time = System.currentTimeMillis();
 		Tomita tomita = new Tomita(interactions);
