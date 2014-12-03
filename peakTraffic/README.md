@@ -1,7 +1,7 @@
 ﻿peak-Traffic
 ============
 
-Question wording: https://codeeval.com/public_sc/49/
+peakTraffic>ProblemWording.txt contains the problem from: https://codeeval.com/public_sc/49/
 
 To execute the build.xml script
 
